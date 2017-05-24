@@ -3,4 +3,11 @@ html
         title primera pagina con express  jade
         
     body 
-        h1!= hola
+        h1!=hola
+        -var array = [1,2,3,4,5];
+        -for (var i= array.length - 1; i>=0;i--)
+            p!= "<h1>"+array[i]+"</h1>"
+            
+                p Numero #{array[i]}
+                
+                p click en el #[a(href="google.com" ) link] please
