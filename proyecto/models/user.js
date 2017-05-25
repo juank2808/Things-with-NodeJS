@@ -2,6 +2,7 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 mongoose.connect('mongodb://juankcol-things-with-nodejs-4895831/proyecto-nodejs');
+
 var user_schema = new Schema({
     
     name: String,
@@ -9,9 +10,16 @@ var user_schema = new Schema({
     password : String,
     age: Number,
     email : String,
-    
+    date_of_bith: Date
     });
     
-var User= mongoose.model("User",user_schema);
+user_schema.virtual("password_confirmation").get(function(){
+    
+    return this.p_c;    
+    
+    }).set(function(password){
+        this.p_c=password;
+        });
 
+var User = mongoose.model("User",user_schema);
 module.exports.User = User;
