@@ -1,20 +1,10 @@
 var express = require("express");
 var bodyParser = require("body-parser");
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
 var app = express();
-var db = 'mongodb://juankcol-things-with-nodejs-4895831/proyecto-nodejs';
-mongoose.connect(db);
+var user = require("./models/user");
 
-var userSchemaJSON = {
-    email:String,
-    password:String
-    };
-    
-var user_schema = new Schema(userSchemaJSON);
-var User = mongoose.model("User",user_schema);
 
-app.use("/static",express.static('public'));//middleware que sirve archivos estaticos
+app.use("/public",express.static('public'));//middleware que sirve archivos estaticos
 app.use("/staticjs",express.static('assets'));//prafijos por si existe algun conflicto en las rutas
 app.use(bodyParser.json());//lee las peticiones json
 app.use(bodyParser.urlencoded({extended: true}));
