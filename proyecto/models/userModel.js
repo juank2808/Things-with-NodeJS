@@ -21,5 +21,6 @@ user_schema.virtual("password_confirmation").get(function(){
         this.p_c=password;
         });
 
-var User = mongoose.model("User",user_schema);
-module.exports.User = User;
+var User = mongoose.model("User",user_schema); //error con los exports
+module.export.User = User; 
+//NO ESTÁ EN USO
